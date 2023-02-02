@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using BackProject.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackProject.DAL
@@ -9,5 +10,14 @@ namespace BackProject.DAL
         {
 
         }
+        public DbSet<Slider> Sliders { get; set; }
+
+        public DbSet<SliderContent> SliderContents { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<NoticeBoard> NoticeBoard { get; set; }
+
+     
     }
 }
