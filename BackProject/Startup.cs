@@ -1,4 +1,5 @@
 using BackProject.DAL;
+using BackProject.Helpers.Extension;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,7 @@ namespace BackProject
             {
                 option.UseSqlite(_config["ConnectionStrings:DefaultConnection"]);
             });
+            services.AddSomeServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
