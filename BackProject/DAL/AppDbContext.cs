@@ -18,6 +18,8 @@ namespace BackProject.DAL
 
         public DbSet<NoticeBoard> NoticeBoard { get; set; }
 
-     
+        public DbSet<Upcomming_Events> Upcomming_Events { get; set; }
+
+
     }
 }

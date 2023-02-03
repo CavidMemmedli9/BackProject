@@ -31,7 +31,7 @@ namespace BackProject
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(option =>
             {
-                option.UseSqlite(_config["ConnectionStrings:DefaultConnection"]);
+                option.UseSqlServer(_config["ConnectionStrings:DefaultConnection"]);
             });
             services.AddSomeServices();
         }

@@ -12,6 +12,8 @@ namespace BackProject.ViewModels
         public List<Course> Course { get; set; }
 
         public List<NoticeBoard> NoticeBoard { get; set; }
+        public List<Upcomming_Events> Upcomming_Events { get; set; }
+
 
     }
 }
