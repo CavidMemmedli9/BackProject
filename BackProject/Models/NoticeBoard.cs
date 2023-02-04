@@ -6,7 +6,7 @@ namespace BackProject.Models
     {
         public int Id { get; set; }
 
-        public DateTime CreatedTime { get; set; }
+      
 
         public string Title { get; set; }
 

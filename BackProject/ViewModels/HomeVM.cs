@@ -14,6 +14,8 @@ namespace BackProject.ViewModels
         public List<NoticeBoard> NoticeBoard { get; set; }
         public List<Upcomming_Events> Upcomming_Events { get; set; }
 
+        public List<Latest_From_Blog> Latest_From_Blog { get; set; }
+
 
     }
 }

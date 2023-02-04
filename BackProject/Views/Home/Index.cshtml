@@ -115,9 +115,10 @@
     <section id="slider-container" class="slider-area">
         <div class="slider-owl owl-theme owl-carousel">
             <!-- Start Slingle Slide -->
-            @foreach (var item in Model.Slider)
+      
+                @foreach (var item in Model.Slider)
             {
-                <div class="single-slide item" style="background-image: url(img/slider/@item.ImageUrl)">   
+                <div class="single-slide item" style="background-image: url(/img/slider/@item.ImageUrl)">   
                      
              
          
@@ -144,6 +145,9 @@
                 <!-- Start Slider Content -->
                   </div>
             }
+          
+
+
             <!-- End Slingle Slide -->
         </div>
 
@@ -157,21 +161,14 @@
         <div class="container">
             <div class="row">
                                     
-                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div  class="col-md-6 col-sm-6 col-xs-12">
    <div class="notice-left">
+                        <h3>notice board</h3>
 
-                @foreach (var item in Model.NoticeBoard)
 
-                {
-                  
-                        <h3>@item.Title</h3>
+@await Component.InvokeAsync("Board")
 
-                            
-                            <div class="single-notice-left pb-75">
-                                <h4>@item.CreatedTime</h4>
-                                <p>@item.Desc </p>
-                            </div>
-                }
+
                 </div>
 
                  </div>
@@ -224,44 +221,20 @@
     <div class="courses-area pt-150 text-center">
         <div class="container">
 
-             
-          
+            
 
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title">
-                        <img src="img/icon/section.png" alt="section-title">
+                        <img src="/img/icon/section.png" alt="section-title">
                         <h2>COURSES WE OFFER</h2>
                     </div>
                 </div>
             </div>
 
-                      @foreach (var item in Model.Course)
+           
 
-                  {
-
-                                      <div class="col-md-4 col-sm-6 col-xs-12">
-                        <div class="row">
-
-                    <div class="single-course">
-                        <div class="course-img">
-                            <a href="course-details.html">
-                                <img src="img/course/@item.ImageUrl" alt="course">
-                                <div class="course-hover">
-                                    <i class="fa fa-link"></i>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="course-content">
-                            <h3><a href="course-details.html">@item.Title</a></h3>
-                            <p>@item.Desc</p>
-                            <a class="default-btn" href="course-details.html">read more</a>
-                        </div>
-                    </div>
-
-                    </div>
-                     </div>
-                      }
+                 @await Component.InvokeAsync("Course",3)
                 
         </div>
          
@@ -273,7 +246,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title">
-                        <img src="img/icon/section.png" alt="section-title">
+                        <img src="/img/icon/section.png" alt="section-title">
                         <h2>UPCOMMING EVENTS</h2>
                     </div>
                 </div>
@@ -316,7 +289,7 @@
                         <div class="single-testimonial">
                             <div class="testimonial-info">
                                 <div class="testimonial-img">
-                                    <img src="img/testimonial/testimonial.jpg" alt="testimonial">
+                                    <img src="/img/testimonial/testimonial.jpg" alt="testimonial">
                                 </div>
                                 <div class="testimonial-content">
                                     <p>I must explain to you how all this mistaken idea of denoung pleure and praising pain was born and I will give you a coete account of the system, and expound the actual</p>
@@ -337,71 +310,23 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="section-title text-center">
-                        <img src="img/icon/section.png" alt="section-title">
+                        <img src="/img/icon/section.png" alt="section-title">
                         <h2>LATEST FROM BLOG</h2>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-blog">
-                        <div class="blog-img">
-                            <a href="blog-details.html"><img src="img/blog/blog1.jpg" alt="blog"></a>
-                            <div class="blog-hover">
-                                <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-top">
-                                <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                            </div>
-                            <div class="blog-bottom">
-                                <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                                <a href="blog-details.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row">
+
+                  @await Component.InvokeAsync("Blog",3)
+
+                  
+
+
+
+
+
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="single-blog">
-                        <div class="blog-img">
-                            <a href="blog-details.html"><img src="img/blog/blog2.jpg" alt="blog"></a>
-                            <div class="blog-hover">
-                                <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-top">
-                                <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                            </div>
-                            <div class="blog-bottom">
-                                <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                                <a href="blog-details.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 hidden-sm col-xs-12">
-                    <div class="single-blog">
-                        <div class="blog-img">
-                            <a href="blog-details.html"><img src="img/blog/blog3.jpg" alt="blog"></a>
-                            <div class="blog-hover">
-                                <a href="blog-details.html"><i class="fa fa-link"></i></a>
-                            </div>
-                        </div>
-                        <div class="blog-content">
-                            <div class="blog-top">
-                                <p>By Alex  /  June 20, 2017  /  <i class="fa fa-comments-o"></i> 4</p>
-                            </div>
-                            <div class="blog-bottom">
-                                <h2><a href="blog-details.html">I must explain to you how all this a mistaken idea </a></h2>
-                                <a href="blog-details.html">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
     <!-- Blog Area End -->
     <!-- Subscribe Start -->
@@ -501,6 +426,8 @@
             </div>
         </div>
     </footer>
+
+   @* @await Component.InvokeAsync("Slider","Home")*@
     <!-- Footer End -->
 
     <script src="~/js/vendor/jquery-1.12.0.min.js"></script>

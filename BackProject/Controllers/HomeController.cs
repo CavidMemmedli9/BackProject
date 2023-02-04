@@ -28,8 +28,9 @@ namespace BackProject.Controllers
             homeVM.Slider = _context.Sliders.ToList();
             homeVM.SliderContent = _context.SliderContents.FirstOrDefault();
             homeVM.NoticeBoard=_context.NoticeBoard.ToList();
-            homeVM.Course = _context.Courses.ToList();
+            homeVM.Course = _context.Courses.Take(3).ToList();
             homeVM.Upcomming_Events = _context.Upcomming_Events.ToList();
+            homeVM.Latest_From_Blog = _context.Latest_From_Blog.Take(3).ToList();
             return View(homeVM);
         }
 
