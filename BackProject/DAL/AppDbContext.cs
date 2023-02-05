@@ -19,7 +19,12 @@ namespace BackProject.DAL
         public DbSet<NoticeBoard> NoticeBoard { get; set; }
 
         public DbSet<Upcomming_Events> Upcomming_Events { get; set; }
+
         public DbSet<Latest_From_Blog> Latest_From_Blog { get; set; }
+
+        public DbSet<Navbar> Navbar { get; set; }
+
+        public DbSet<Teachers> Teachers { get; set; }
 
     }
 }
