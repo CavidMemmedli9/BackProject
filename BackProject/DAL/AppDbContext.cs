@@ -25,6 +25,6 @@ namespace BackProject.DAL
         public DbSet<Navbar> Navbar { get; set; }
 
         public DbSet<Teachers> Teachers { get; set; }
-
+        public DbSet<Event> Events { get; set; }
     }
 }

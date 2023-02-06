@@ -1,5 +1,6 @@
 ﻿using BackProject.DAL;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace BackProject.Controllers
 {
@@ -14,8 +15,9 @@ namespace BackProject.Controllers
 
         public IActionResult Index()
         {
+            var courses = _context.Courses.ToList();
 
-            return View();
+            return View(courses);
         }
     }
 }

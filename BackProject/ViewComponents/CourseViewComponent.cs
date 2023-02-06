@@ -16,9 +16,9 @@ namespace BackProject.ViewComponents
             _appDbContext = appDbContext;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(int take)
         {
-            List<Course> Courses = _appDbContext.Courses.Take(3).ToList();
+            List<Course> Courses = _appDbContext.Courses.Take(take).ToList();
             return View(await Task.FromResult(Courses));
         }
     }
