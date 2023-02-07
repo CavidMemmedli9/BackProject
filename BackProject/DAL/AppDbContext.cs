@@ -12,7 +12,6 @@ namespace BackProject.DAL
         }
         public DbSet<Slider> Sliders { get; set; }
 
-        public DbSet<SliderContent> SliderContents { get; set; }
 
         public DbSet<Course> Courses { get; set; }
 

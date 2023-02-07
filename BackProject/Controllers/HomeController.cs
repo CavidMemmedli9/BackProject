@@ -26,7 +26,6 @@ namespace BackProject.Controllers
 
             HomeVM homeVM = new HomeVM();
             homeVM.Slider = _context.Sliders.ToList();
-            homeVM.SliderContent = _context.SliderContents.FirstOrDefault();
             homeVM.NoticeBoard=_context.NoticeBoard.ToList();
             homeVM.Course = _context.Courses.Take(3).ToList();
             homeVM.Upcomming_Events = _context.Upcomming_Events.ToList();

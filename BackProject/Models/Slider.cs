@@ -10,6 +10,10 @@ namespace BackProject.Models
 
         public string ImageUrl { get; set; }
 
+        public string Title { get; set; }
+
+        public string Desc { get; set; }
+
         [NotMapped]
         [Required]
         public IFormFile Photo { get; set; }

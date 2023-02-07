@@ -7,7 +7,6 @@ namespace BackProject.ViewModels
     {
         public List<Slider> Slider { get; set; }
 
-        public SliderContent SliderContent { get; set; }
 
         public List<Course> Course { get; set; }
 
