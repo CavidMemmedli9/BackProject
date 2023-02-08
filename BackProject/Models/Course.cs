@@ -1,4 +1,6 @@
-﻿namespace BackProject.Models
+﻿using System.Collections.Generic;
+
+namespace BackProject.Models
 {
     public class Course
     {
@@ -9,5 +11,7 @@
         public string Title { get; set; }
 
         public string Desc { get; set; }
+
+        public List<Feature> Feature { get; set; }
     }
 }

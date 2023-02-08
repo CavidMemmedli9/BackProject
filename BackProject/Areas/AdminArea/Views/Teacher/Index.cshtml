@@ -1,5 +1,4 @@
-﻿
-@model List<Slider>
+﻿@model List<Teachers>
 
 @{
     ViewData["Title"] = "Index";
@@ -12,17 +11,17 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Slider Table</h4>
+                    <h4 class="card-title">Teacher Table</h4>
                     <p class="card-description">
-                        <a asp-controller="slider" asp-action="Create"> <btn style="background-color:lawngreen;cursor:pointer;padding:10px"> Create </btn>  </a>
+                        <a asp-controller="teacher" asp-action="Create"> <btn style="background-color:lawngreen;cursor:pointer;padding:10px"> Create </btn>  </a>
                     </p>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <tr>
 
+                                <tr>
                                     <th>Image</th>
-                                    <th>Title</th>
+                                    <th>Name</th>
                                     <th>Desc</th>
                                     <th>Settings</th>
 
@@ -33,15 +32,20 @@
                                 {
                                     <tr>
                                         <td>
-                                            <img width="100" height="100" src="~/img/slider/@item.ImageUrl" />
+                                            <img width="100" height="100" src="~/img/teacher/@item.ImageUrl" />
                                         </td>
+
+
 
                                         <td>
-                                         <p>@item.Desc</p>
+                                            <p>@item.Name</p>
                                         </td>
 
-                                         <td>
-                                            <p>@item.Title</p>
+
+
+
+                                        <td>
+                                            <p>@item.Desc</p>
                                         </td>
 
 

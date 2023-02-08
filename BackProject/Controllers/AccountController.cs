@@ -51,8 +51,8 @@ namespace BackProject.Controllers
                 return View(register);
             }
 
-            await _userManager.AddToRoleAsync(user, RolesEnum.Member.ToString());
-            
+            //await _userManager.AddToRoleAsync(user, RolesEnum.Member.ToString());
+
             return RedirectToAction("login");
         }
 

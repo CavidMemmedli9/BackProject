@@ -113,6 +113,29 @@
                                     </ul>
                                 </nav>
                             </div>
+
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <span>@ViewBag.FullName</span>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="account" asp-action="logout">Logout</a>
+
+                                </li>
+                            }
+
+                            else
+                            {
+
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="account" asp-action="login" asp-route-ReturnUrl="@Context.Request.Path">Login</a>
+
+                                </li>
+                            }
+
                             <!--Search Form Start-->
                             <div class="search-btn">
                                 <ul data-toggle="dropdown" class="header-search search-toggle">

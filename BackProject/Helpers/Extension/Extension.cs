@@ -45,10 +45,10 @@ namespace BackProject.Helpers.Extension
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
 
-                options.User.RequireUniqueEmail = true;
+                //options.User.RequireUniqueEmail = true;
 
                 options.Lockout.MaxFailedAccessAttempts = 3;
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromSeconds(10);
                 options.Lockout.AllowedForNewUsers = true;
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
