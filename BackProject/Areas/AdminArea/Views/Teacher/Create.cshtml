@@ -32,6 +32,11 @@
                         <span asp-validation-for="Desc" style="color:red"> </span>
                     </div>
 
+                     <div class="form-group">
+                        <label asp-for="SocialPages">SocialPages</label>
+                        <input asp-for="SocialPages" class="form-control" placeholder="Desc" asp-items="@ViewBag.SocialPage">
+                    </div>
+
 
 
                     <button type="submit" class="btn btn-primary mr-2"> Submit </button>

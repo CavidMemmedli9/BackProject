@@ -23,7 +23,16 @@ namespace BackProject.DAL
 
         public DbSet<Navbar> Navbar { get; set; }
 
-        public DbSet<Teachers> Teachers { get; set; }
         public DbSet<Event> Events { get; set; }
+        public DbSet<About> About { get; set; }
+
+        public DbSet<Feature> Feature { get; set; }
+
+
+        public DbSet<Teachers> Teachers { get; set; }
+
+        public DbSet<SocialPage> SocialPage { get; set; }
+
+        //public DbSet<TeacherSosialPage> TeacherSosialPage { get; set; }
     }
 }

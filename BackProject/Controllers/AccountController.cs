@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using BackProject.Helpers;
 using System.Net.Mail;
 using System.Net;
+using System;
 
 namespace BackProject.Controllers
 {
@@ -100,6 +101,20 @@ namespace BackProject.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index","Home");
+        }
+
+        public async Task<IActionResult> AddRoles()
+        {
+            foreach (var role in Enum.GetValues(typeof(RolesEnum)))
+            {
+                if (!await _roleManager.RoleExistsAsync(role.ToString()))
+                {
+                    await _roleManager.CreateAsync(new IdentityRole { Name = role.ToString() });
+                }
+
+            }
+            return Content("role elave olundu");
+
         }
 
         public IActionResult ForgetPassword()

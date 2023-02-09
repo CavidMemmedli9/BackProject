@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Reflection.Metadata.Ecma335;
+using System.Collections.Generic;
 
 namespace BackProject.Models
 {
@@ -18,5 +20,10 @@ namespace BackProject.Models
         [NotMapped]
         [Required]
         public IFormFile Photo { get; set; }
+
+        public List<About>About { get; set; }
+
+        public List<SocialPage> SocialPages { get; set; }
+
     }
 }

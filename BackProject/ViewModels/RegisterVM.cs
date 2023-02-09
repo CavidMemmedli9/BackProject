@@ -15,7 +15,7 @@ namespace BackProject.ViewModels
         public string Password { get; set; }
 
         [Required, DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Passwords uyğun gəlmir")]
+        [Compare("Password", ErrorMessage = "Passwords don't match ")]
         [Display(Name = "Repeat Password")]
         public string PasswordConfirm { get; set; }
 

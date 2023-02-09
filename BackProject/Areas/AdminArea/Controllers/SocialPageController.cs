@@ -11,12 +11,12 @@ using System.Linq;
 namespace BackProject.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
-    public class TeacherController : Controller
+    public class SocialPageController : Controller
     {
         private readonly AppDbContext _appDbContext;
         private readonly IWebHostEnvironment _env;
 
-        public TeacherController(AppDbContext appDbContext, IWebHostEnvironment env)
+        public SocialPageController(AppDbContext appDbContext, IWebHostEnvironment env)
         {
             _appDbContext = appDbContext;
             _env = env;
@@ -24,14 +24,14 @@ namespace BackProject.Areas.AdminArea.Controllers
 
         public IActionResult Index()
         {
-            var teachers = _appDbContext.Teachers.ToList();
+            var pages = _appDbContext.SocialPage.ToList();
             _appDbContext.SaveChanges();
-            return View(teachers);
+            return View(pages);
         }
-        //[Authorize]
+ 
         public IActionResult Create()
         {
-            ViewBag.SocialPage=new SelectList(_appDbContext.SocialPage.ToList(),"Id");
+            ViewBag.Teachers = new SelectList(_appDbContext.Teachers.ToList(), "Id", "Name");
             return View();
         }
 

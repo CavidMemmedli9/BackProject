@@ -11,6 +11,42 @@
     <Compile Remove="Migrations\20230202202527_firsTable.Designer.cs" />
     <Compile Remove="Migrations\20230203130554_TableInitial.cs" />
     <Compile Remove="Migrations\20230203130554_TableInitial.Designer.cs" />
+    <Compile Remove="Migrations\20230209072256_socialTable.cs" />
+    <Compile Remove="Migrations\20230209072256_socialTable.Designer.cs" />
+    <Compile Remove="Migrations\20230209082004_TableSocilaPage.cs" />
+    <Compile Remove="Migrations\20230209082004_TableSocilaPage.Designer.cs" />
+    <Compile Remove="Migrations\20230209112026_Newtable.cs" />
+    <Compile Remove="Migrations\20230209112026_Newtable.Designer.cs" />
+    <Compile Remove="Migrations\20230209112153_tableNew.cs" />
+    <Compile Remove="Migrations\20230209112153_tableNew.Designer.cs" />
+    <Compile Remove="Migrations\20230209112411_TabLe.cs" />
+    <Compile Remove="Migrations\20230209112411_TabLe.Designer.cs" />
+    <Compile Remove="Migrations\20230209112506_Social.cs" />
+    <Compile Remove="Migrations\20230209112506_Social.Designer.cs" />
+    <Compile Remove="Migrations\20230209140803_SosialpAge.cs" />
+    <Compile Remove="Migrations\20230209140803_SosialpAge.Designer.cs" />
+    <Compile Remove="Migrations\20230209141414_TableSosal.cs" />
+    <Compile Remove="Migrations\20230209141414_TableSosal.Designer.cs" />
+    <Compile Remove="Migrations\20230209142019_TablSocial.cs" />
+    <Compile Remove="Migrations\20230209142019_TablSocial.Designer.cs" />
+    <Compile Remove="Migrations\20230209142952_TABLE.cs" />
+    <Compile Remove="Migrations\20230209142952_TABLE.Designer.cs" />
+    <Compile Remove="Migrations\20230209143215_TABLe.cs" />
+    <Compile Remove="Migrations\20230209143215_TABLe.Designer.cs" />
+    <Compile Remove="Migrations\20230209152545_TAblE.cs" />
+    <Compile Remove="Migrations\20230209152545_TAblE.Designer.cs" />
+    <Compile Remove="Migrations\20230209153118_TeachTabLe.cs" />
+    <Compile Remove="Migrations\20230209153118_TeachTabLe.Designer.cs" />
+    <Compile Remove="Migrations\20230209153650_Export.cs" />
+    <Compile Remove="Migrations\20230209153650_Export.Designer.cs" />
+    <Compile Remove="Migrations\20230209153753_Export1.cs" />
+    <Compile Remove="Migrations\20230209153753_Export1.Designer.cs" />
+    <Compile Remove="Migrations\20230209155417_Expor.cs" />
+    <Compile Remove="Migrations\20230209155417_Expor.Designer.cs" />
+    <Compile Remove="Migrations\20230209155705_Expor12.cs" />
+    <Compile Remove="Migrations\20230209155705_Expor12.Designer.cs" />
+    <Compile Remove="Migrations\20230209155847_Expor123.cs" />
+    <Compile Remove="Migrations\20230209155847_Expor123.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
