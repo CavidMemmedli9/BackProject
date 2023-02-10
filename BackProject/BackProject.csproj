@@ -47,6 +47,10 @@
     <Compile Remove="Migrations\20230209155705_Expor12.Designer.cs" />
     <Compile Remove="Migrations\20230209155847_Expor123.cs" />
     <Compile Remove="Migrations\20230209155847_Expor123.Designer.cs" />
+    <Compile Remove="Migrations\20230210064106_CourseTable.cs" />
+    <Compile Remove="Migrations\20230210064106_CourseTable.Designer.cs" />
+    <Compile Remove="Migrations\20230210070623_changeRelationBetweenCourseCategory.cs" />
+    <Compile Remove="Migrations\20230210070623_changeRelationBetweenCourseCategory.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

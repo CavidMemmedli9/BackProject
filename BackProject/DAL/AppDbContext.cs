@@ -33,6 +33,8 @@ namespace BackProject.DAL
 
         public DbSet<SocialPage> SocialPage { get; set; }
 
-        //public DbSet<TeacherSosialPage> TeacherSosialPage { get; set; }
+
+        public DbSet<Category> Category { get; set; }
+
     }
 }

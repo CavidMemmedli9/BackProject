@@ -28,7 +28,7 @@ namespace BackProject.Areas.AdminArea.Controllers
             _appDbContext.SaveChanges();
             return View(pages);
         }
- 
+
         public IActionResult Create()
         {
             ViewBag.Teachers = new SelectList(_appDbContext.Teachers.ToList(), "Id", "Name");

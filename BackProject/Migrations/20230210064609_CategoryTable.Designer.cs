@@ -4,14 +4,16 @@ using BackProject.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230210064609_CategoryTable")]
+    partial class CategoryTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -126,10 +128,15 @@ namespace BackProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
 
                     b.ToTable("Category");
                 });
@@ -141,9 +148,6 @@ namespace BackProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Desc")
                         .HasColumnType("nvarchar(max)");
 
@@ -154,8 +158,6 @@ namespace BackProject.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Courses");
                 });
@@ -497,11 +499,11 @@ namespace BackProject.Migrations
                         .HasForeignKey("TeachersId");
                 });
 
-            modelBuilder.Entity("BackProject.Models.Course", b =>
+            modelBuilder.Entity("BackProject.Models.Category", b =>
                 {
-                    b.HasOne("BackProject.Models.Category", "Category")
-                        .WithMany("Courses")
-                        .HasForeignKey("CategoryId")
+                    b.HasOne("BackProject.Models.Course", null)
+                        .WithMany("Category")
+                        .HasForeignKey("CourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

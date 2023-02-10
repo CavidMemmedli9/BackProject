@@ -1,4 +1,5 @@
-﻿@model Teachers
+﻿
+@model Course
 
 @{
     ViewData["Title"] = "Create";
@@ -11,20 +12,21 @@
             <div class="card-body">
 
                 <p class="card-description">
-                    Create Teacher Form
+                    Create Slider Form
                 </p>
                 <form method="post" class="forms-sample" enctype="multipart/form-data">
 
+
                     <div class="form-group">
-                        <label asp-for="Photo">Name</label>
-                        <input accept="image/*" asp-for="Photo" class="form-control" placeholder="Name">
+                        <label asp-for="Photo">Photo</label>
+                        <input asp-for="Photo" class="form-control" placeholder="photo">
                         <span asp-validation-for="Photo" style="color:red"> </span>
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="Name">Title</label>
-                        <input asp-for="Name" class="form-control" placeholder="Title">
-                        <span asp-validation-for="Name" style="color:red"> </span>
+                        <label asp-for="Title">Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Title">
+                        <span asp-validation-for="Title" style="color:red"> </span>
                     </div>
 
                     <div class="form-group">
@@ -33,15 +35,26 @@
                         <span asp-validation-for="Desc" style="color:red"> </span>
                     </div>
 
-                     <div class="form-group">
-                        <label asp-for="SocialPages">SocialPages</label>
-                        <input asp-for="SocialPages" class="form-control" placeholder="Desc" asp-items="@ViewBag.SocialPage">
+
+
+                    <div class="form-group">
+                        <label asp-for="CategoryId">Category</label>
+                        <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.Categories" > </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+
+                   <button type="submit" class="btn btn-primary mr-2"> Submit </button> 
                     <a asp-action="index"> <btn style="background-color:midnightblue;cursor:pointer;padding:10px"> Back </btn> </a>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
+@*@section Scripts{
+    <partial name="_Validation" />
+}*@
+
+
+
+

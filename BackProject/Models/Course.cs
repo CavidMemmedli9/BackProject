@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackProject.Models
 {
@@ -12,6 +15,14 @@ namespace BackProject.Models
 
         public string Desc { get; set; }
 
+
+        [NotMapped]
+        [Required]
+        public IFormFile Photo { get; set; }
+
         public List<Feature> Feature { get; set; }
+
+        public Category Category { get; set; }
+        public int CategoryId { get; set; }
     }
 }
