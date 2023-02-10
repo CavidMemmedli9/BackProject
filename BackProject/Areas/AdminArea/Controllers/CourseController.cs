@@ -53,24 +53,14 @@ namespace BackProject.Areas.AdminArea.Controllers
             {
                 return View();
             }
-            //if (!item.Photo.CheckImage())
-            //{
-            //    ModelState.AddModelError("Photo", "sekil sec");
-            //}
-            //if (Course.Photo.CheckImageSize(1000))
-            //{
-            //    ModelState.AddModelError("Photo", "olcu boyukdur");
-            //}
-
+           
 
             Course newCourse = new Course();
-            newCourse.ImageUrl = course.ImageUrl;
+            newCourse.ImageUrl = course.Photo.SaveImage(_env, "img/course");
             newCourse.Title = course.Title;
             newCourse.Desc = course.Desc;
             newCourse.CategoryId = course.CategoryId;
 
-            //newCourse.Name = Course.Name;
-            //newCourse.SocialPages = teacher.SocialPages;
             _appDbContext.Courses.Add(newCourse);
             _appDbContext.SaveChanges();
             return View();
@@ -82,7 +72,7 @@ namespace BackProject.Areas.AdminArea.Controllers
             Course courses = _appDbContext.Courses.Find(id);
             if (courses == null) return NotFound();
 
-            string path = Path.Combine(_env.WebRootPath + "img" + courses.ImageUrl);
+            string path = Path.Combine(_env.WebRootPath + "/img" + courses.ImageUrl);
             if (System.IO.File.Exists(path))
             {
                 System.IO.File.Delete(path);
@@ -98,40 +88,41 @@ namespace BackProject.Areas.AdminArea.Controllers
             if (id == null) return NotFound();
             Course course = _appDbContext.Courses.Find(id);
             if (course == null) return NotFound();
-            return View(new UpdateTeacherVM { ImageUrl = course.ImageUrl, Desc = course.Desc });
+            return View(new UpdateCourseVM { ImageUrl = course.ImageUrl, Desc = course.Desc,Title=course.Title });
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
 
-        public IActionResult Update(int? id, UpdateTeacherVM teacher)
+        public IActionResult Update(int? id, UpdateCourseVM course)
         {
             if (id == null) return NotFound();
             Course existCourse = _appDbContext.Courses.Find(id);
             if (existCourse == null) return NotFound();
             string filename = null;
 
-            if (teacher.Photo != null)
+            if (course.Photo != null)
             {
-                string path = Path.Combine(_env.WebRootPath, "img/course", existCourse.ImageUrl);
+                string path = Path.Combine(_env.WebRootPath,"img/course",existCourse.ImageUrl);
                 if (System.IO.File.Exists(path))
                 {
                     System.IO.File.Delete(path);
                 }
 
-                //if (!teacher.Photo.CheckImage())
-                //{
-                //    ModelState.AddModelError("Photo", "sekil sec");
-                //}
-                //if (teacher.Photo.CheckImageSize(1000))
-                //{
-                //    ModelState.AddModelError("Photo", "olcu boyukdur");
+                if (!course.Photo.CheckImage())
+                {
+                    ModelState.AddModelError("Photo", "sekil sec");
+                }
+                if (course.Photo.CheckImageSize(1000))
+                {
+                    ModelState.AddModelError("Photo", "olcu boyukdur");
 
-                //}
-                //filename = teacher.Photo.SaveImage(_env, "img/teacher");
+                }
+                filename = course.Photo.SaveImage(_env, "img/course");
 
             }
             existCourse.ImageUrl = filename ?? existCourse.ImageUrl;
-            existCourse.Desc = teacher.Desc;
+            existCourse.Desc = course.Desc;
+            existCourse.Title = course.Title;
             _appDbContext.SaveChanges();
             return RedirectToAction("Index");
 

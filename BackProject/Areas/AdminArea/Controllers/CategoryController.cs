@@ -4,9 +4,9 @@ using BackProject.Models;
 using BackProject.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BackProject.Areas.AdminArea.Controllers
 {
@@ -24,14 +24,15 @@ namespace BackProject.Areas.AdminArea.Controllers
 
         public IActionResult Index()
         {
-            var category = _appDbContext.Category.ToList();
+            var categories = _appDbContext.Category.ToList();
             _appDbContext.SaveChanges();
-            return View(category);
+
+            return View(categories);
         }
 
+     
         public IActionResult Create()
         {
-            ViewBag.Course = new SelectList(_appDbContext.Courses.ToList(), "Id");
             return View();
         }
 
@@ -39,28 +40,25 @@ namespace BackProject.Areas.AdminArea.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult Create(Category category)
         {
-            if (ModelState["Photo"].ValidationState == Microsoft.AspNetCore.Mvc.ModelBinding.ModelValidationState.Invalid)
+            if (!ModelState.IsValid) return View();
+
+            var isExist = _appDbContext.Category
+                .Any(c => c.Name.ToLower() == category.Name.ToLower());
+
+            if (isExist)
             {
+                ModelState.AddModelError("Name", "this name already exist");
                 return View();
             }
-            //if (!category.Photo.CheckImage())
-            //{
-            //    ModelState.AddModelError("Photo", "sekil sec");
-            //}
-            //if (teacher.Photo.CheckImageSize(1000))
-            //{
-            //    ModelState.AddModelError("Photo", "olcu boyukdur");
-            //}
 
 
+            _appDbContext.Category.Add(category);
 
-            Category newCategory = new Category();
-           
-            newCategory.Name = category.Name;
-            _appDbContext.Category.Add(newCategory);
             _appDbContext.SaveChanges();
-            return View();
+
+            return RedirectToAction("Index");
         }
+
 
         public IActionResult Delete(int? id)
         {
@@ -68,6 +66,7 @@ namespace BackProject.Areas.AdminArea.Controllers
             Category category = _appDbContext.Category.Find(id);
             if (category == null) return NotFound();
 
+            //string path = Path.Combine(_env.WebRootPath + "/img" + category.ImageUrl);
             //if (System.IO.File.Exists(path))
             //{
             //    System.IO.File.Delete(path);
@@ -78,49 +77,6 @@ namespace BackProject.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Update(int? id)
-        {
-            if (id == null) return NotFound();
-            Category Category = _appDbContext.Category.Find(id);
-            if (Category == null) return NotFound();
-            return View(new UpdateCategoryVM {  Name = Category.Name });
-        }
-        [HttpPost]
-        [AutoValidateAntiforgeryToken]
 
-        public IActionResult Update(int? id, UpdateCategoryVM category)
-        {
-            if (id == null) return NotFound();
-            Category existCategory = _appDbContext.Category.Find(id);
-            if (existCategory == null) return NotFound();
-            //string filename = null;
-
-            //if (teacher.Photo != null)
-            //{
-            //    string path = Path.Combine(_env.WebRootPath, "img/teacher", existTeacher.ImageUrl);
-            //    if (System.IO.File.Exists(path))
-            //    {
-            //        System.IO.File.Delete(path);
-            //    }
-
-            //    if (!teacher.Photo.CheckImage())
-            //    {
-            //        ModelState.AddModelError("Photo", "sekil sec");
-            //    }
-            //    if (teacher.Photo.CheckImageSize(1000))
-            //    {
-            //        ModelState.AddModelError("Photo", "olcu boyukdur");
-
-            //    }
-            //    filename = teacher.Photo.SaveImage(_env, "img/teacher");
-
-            //}
-        
-            existCategory.Name = category.Name;
-            _appDbContext.SaveChanges();
-            return RedirectToAction("Index");
-
-
-        }
     }
 }

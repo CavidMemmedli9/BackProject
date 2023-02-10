@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackProject.Models
 {
@@ -9,5 +12,6 @@ namespace BackProject.Models
         public string Name { get; set; }
 
         public List<Course> Courses { get; set; }
+
     }
 }
