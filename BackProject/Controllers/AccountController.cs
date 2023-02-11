@@ -135,6 +135,12 @@ namespace BackProject.Controllers
             }
             var token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
 
+            var link = Url.Action(nameof(ResetPassword), "Account", new
+            {
+                email = appUser.Email,
+                token
+            }, Request.Scheme, Request.Host.ToString());
+
             string url = Url.Action(nameof(ResetPassword), "Account"
                 , new { email = appUser.Email, token }, Request.Scheme, Request.Host.ToString());
             MailMessage mailMessage = new MailMessage();
@@ -148,7 +154,6 @@ namespace BackProject.Controllers
             smtpClient.Host = "smtp.gmail.com";
             smtpClient.Port = 587;
             smtpClient.EnableSsl = true;
-
 
             smtpClient.Credentials = new NetworkCredential("javidsm@code.edu.az", "ohcbesummefyviux");
 

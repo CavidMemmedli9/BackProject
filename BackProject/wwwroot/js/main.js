@@ -13,7 +13,9 @@
 		}else{
 			stick.addClass("sticky");
 		}
-	});  
+    });  
+
+
 /*------------------------------------
 	jQuery MeanMenu 
 --------------------------------------*/
@@ -128,3 +130,17 @@ $(".notice-left").niceScroll({
         });
 
 })(jQuery);	
+
+
+
+$(document).on("keyup", "#search", function () {
+    $("#search-form li").slice(1).remove();
+    let value = $("#search").val().trim();
+    $.ajax({
+        url: "/course/search?item=" + value,
+        method: "get",
+        success: function (res) {
+            $("#search-form").append(res);
+        }
+    })
+})

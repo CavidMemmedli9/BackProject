@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="~/css/responsive.css">
     <script src="~/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body>
+<body style="overflow-x:hidden">
     <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -48,13 +48,14 @@
                                 @if (User.Identity.IsAuthenticated)
                                 {
 
-                                    <li style="text-decoration:none;list-style-type:none" class="nav-item">
-                                        <span>@User.Identity.Name</span>
+                                    <li class="nav-item">
+                                        <span>@ViewBag.FullName</span>
                                     </li>
 
-                                    <li style="text-decoration:none;list-style-type:none" class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link" asp-controller="account" asp-action="logout">Logout</a>
                                     </li>
+
                                 }
 
                                 else
@@ -63,7 +64,6 @@
                                         <a class="nav-link" asp-controller="account" asp-action="login" asp-route-ReturnUrl="@Context.Request.Path">Login</a>
                                     </li>
                                 }
-
                                 <li><a href="signup.html">signup</a></li>
                             </ul>
                         </div>
@@ -86,7 +86,7 @@
                                 <nav>
                                     <ul>
                                         <li>
-                                            <a href="index.html">Home</a>
+                                            <a asp-controller="home" asp-action="index" >Home</a>
                                             <ul>
                                                 <li><a href="index.html">Home One</a></li>
                                                 <li><a href="index-2.html">Home Two</a></li>
@@ -95,16 +95,16 @@
                                                 <li><a href="index-5.html">Home Five</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="about.html">About</a></li>
+                                        <li><a asp-controller="about" asp-action="index">About</a></li>
                                         <li>
-                                            <a href="course.html">courses</a>
+                                            <a asp-controller="course" asp-action="index">courses</a>
                                             <ul>
                                                 <li><a href="course.html">courses</a></li>
                                                 <li><a href="course-details.html">courses details</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="event.html">event</a>
+                                            <a asp-controller="event" asp-action="index">event</a>
                                             <ul>
                                                 <li><a href="event.html">event</a></li>
                                                 <li><a href="event-left-side-bar.html">event left sidebar</a></li>
@@ -113,14 +113,14 @@
                                             </ul>
                                         </li>
                                         <li class="hidden-sm">
-                                            <a href="teacher.html">teacher</a>
+                                            <a asp-controller="teacher" asp-action="index">teacher</a>
                                             <ul>
                                                 <li><a href="teacher.html">teacher</a></li>
                                                 <li><a href="teacher-details.html">teacher details</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="blog.html">blog</a>
+                                            <a asp-controller="blog" asp-action="index">blog</a>
                                             <ul>
                                                 <li><a href="blog.html">blog</a></li>
                                                 <li><a href="blog-left-side-bar.html">blog left sidebar</a></li>
@@ -135,12 +135,8 @@
                             </div>
 
                            
-                        
-
-                        
-
                             <!--Search Form Start-->
-                            <div class="search-btn">
+                           <div class="search-btn">
                                 <ul data-toggle="dropdown" class="header-search search-toggle">
                                     <li class="search-menu">
                                         <i class="fa fa-search"></i>
@@ -149,14 +145,29 @@
                                 <div class="search">
                                     <div class="search-form">
                                         <form id="search-form" action="#">
-                                            <input type="search" placeholder="Search here..." name="search" />
+
+                                         @*   <li class="nav-item my-auto search">
+                                                <i class="fas fa-search" id="search"></i>
+                                                <ul class="list-unstyled py-3" id="searchList">
+                                                    <li class="d-flex px-3">
+                                                        <input id="input-search" type="text" placeholder="Search">
+                                                        <i class="fas fa-search my-auto" id="search"></i>
+                                                    </li>
+
+                                                </ul>
+                                            </li>*@
+                                         
+                                            <input type="search" id="search" placeholder="Search here..." name="search" />
                                             <button type="submit">
                                                 <span><i class="fa fa-search"></i></span>
                                             </button>
+
                                         </form>
                                     </div>
                                 </div>
                             </div>
+
+
                             <!--End of Search Form-->
                             <!-- Main Menu End -->
                         </div>
@@ -267,6 +278,7 @@
     </footer>
     <!-- Footer End -->
 
+    <script src="~/js/vendor/script.js"></script>
     <script src="~/js/vendor/jquery-1.12.0.min.js"></script>
     <script src="~/js/bootstrap.min.js"></script>
     <script src="~/js/jquery.meanmenu.js"></script>
@@ -277,6 +289,8 @@
     <script src="~/js/jquery.nicescroll.min.js"></script>
     <script src="~/js/plugins.js"></script>
     <script src="~/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </body>
 
 <!-- Mirrored from demo.devitems.com/eduhome/blog.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 21 Jun 2020 19:47:36 GMT -->

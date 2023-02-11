@@ -28,13 +28,13 @@ namespace BackProject.DAL
 
         public DbSet<Feature> Feature { get; set; }
 
-
         public DbSet<Teachers> Teachers { get; set; }
+
+        public DbSet<Category> Category { get; set; }
+
 
         public DbSet<SocialPage> SocialPage { get; set; }
 
-
-        public DbSet<Category> Category { get; set; }
 
     }
 }

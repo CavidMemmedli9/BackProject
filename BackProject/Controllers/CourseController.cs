@@ -1,5 +1,8 @@
 ﻿using BackProject.DAL;
+using BackProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BackProject.Controllers
@@ -18,6 +21,22 @@ namespace BackProject.Controllers
             var courses = _context.Courses.ToList();
 
             return View(courses);
+        }
+
+        
+        public IActionResult Search(string item)
+        {
+            List<Course> courses = new List<Course>();
+            if( item!=null&& item.Length>1)
+            {
+                courses= _context.Courses.Where(c=>c.Title.ToLower().Contains(item.ToLower())).ToList();
+            }
+           
+            
+
+            return PartialView("_SearchPartial", courses);
+
+
         }
     }
 }
