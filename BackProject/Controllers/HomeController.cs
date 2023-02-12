@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace BackProject.Controllers
@@ -35,7 +37,39 @@ namespace BackProject.Controllers
             return View(homeVM);
         }
 
-      
+        public async Task<IActionResult> SendEmail(string email)
+        {
+            try
+            {
+                var fromAddress = new MailAddress("javidsm@code.edu.az", "Edu Home");
+                var toAddress = new MailAddress(email);
+                const string fromPassword = "ukyjpnuqurolhjvb";
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = "Hello",
+                    Body = $"Thanks Subscribe"
+                })
+                {
+                    await smtp.SendMailAsync(message);
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                return View("Error", ex);
+            }
+        }
 
     }
 }

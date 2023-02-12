@@ -1,6 +1,8 @@
 ﻿using BackProject.DAL;
+using BackProject.Models;
 using BackProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace BackProject.Controllers
@@ -21,5 +23,20 @@ namespace BackProject.Controllers
             aboutVM.Teachers = _context.Teachers.Take(4).ToList();
             return View(aboutVM);
         }
+
+        //public IActionResult Search(string item)
+        //{
+        //    List<About> about = new List<About>();
+        //    if (item != null && item.Length > 1)
+        //    {
+        //        about = _context.About.Where(c => c.Title.ToLower().Contains(item.ToLower())).ToList();
+        //    }
+
+
+
+        //    return PartialView("_SearchPartial", about);
+
+
+        //}
     }
 }

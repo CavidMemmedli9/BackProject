@@ -16,11 +16,18 @@ namespace BackProject.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string search)
         {
-            var courses = _context.Courses.ToList();
+            var courses = _context.Courses;
 
-            return View(courses);
+            if (search == null)
+            {
+                return View(courses.ToList());
+            }
+
+            var listCourse=courses.Where(c=>c.Title.ToLower().Contains(search.ToLower()));
+
+            return View(listCourse.ToList());
         }
 
         

@@ -133,14 +133,14 @@ $(".notice-left").niceScroll({
 
 
 
-$(document).on("keyup", "#search", function () {
-    $("#search-form li").slice(1).remove();
-    let value = $("#search").val().trim();
+$(document).on("keyup", "#searchInput", function () {
+    $("#search li").slice().remove();
+    let value = $("#searchInput").val().trim();
     $.ajax({
         url: "/course/search?item=" + value,
         method: "get",
         success: function (res) {
-            $("#search-form").append(res);
+            $("#search").append(res);
         }
     })
 })
