@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BackProject.Areas.AdminArea.Controllers
 {
@@ -31,7 +32,6 @@ namespace BackProject.Areas.AdminArea.Controllers
         //[Authorize]
         public IActionResult Create()
         {
-            ViewBag.SocialPage=new SelectList(_appDbContext.SocialPage.ToList(),"Id");
             return View();
         }
 
@@ -58,7 +58,15 @@ namespace BackProject.Areas.AdminArea.Controllers
             newTeacher.ImageUrl = teacher.Photo.SaveImage(_env, "img/teacher");
             newTeacher.Desc = teacher.Desc;
             newTeacher.Name = teacher.Name;
-            newTeacher.SocialPages = teacher.SocialPages;
+            newTeacher.Facebook = teacher.Facebook;
+            newTeacher.Instagram = teacher.Instagram;
+            newTeacher.LinkedIn = teacher.LinkedIn;
+            newTeacher.Whatsapp = teacher.Whatsapp;
+            newTeacher.Degree = teacher.Degree;
+            newTeacher.Email = teacher.Email;
+            newTeacher.Experience = teacher.Experience;
+            newTeacher.Faculty = teacher.Faculty;
+            newTeacher.Hobby = teacher.Hobby;
             _appDbContext.Teachers.Add(newTeacher);
             _appDbContext.SaveChanges();
             return View();
@@ -121,10 +129,31 @@ namespace BackProject.Areas.AdminArea.Controllers
             existTeacher.ImageUrl = filename ?? existTeacher.ImageUrl;
             existTeacher.Desc = teacher.Desc;
             existTeacher.Name = teacher.Name;
+            existTeacher.Facebook = teacher.Facebook;
+            existTeacher.Instagram = teacher.Instagram;
+            existTeacher.LinkedIn = teacher.LinkedIn;
+            existTeacher.Whatsapp = teacher.Whatsapp;
+            existTeacher.Degree = teacher.Degree;
+            existTeacher.Email = teacher.Email;
+            existTeacher.Experience = teacher.Experience;
+            existTeacher.Faculty = teacher.Faculty;
+            existTeacher.Hobby = teacher.Hobby;
+
+
+
             _appDbContext.SaveChanges();
             return RedirectToAction("Index");
 
+        }
 
+        public async Task<IActionResult> Detail(int?id)
+        {
+            if (id == null) return NotFound();
+
+            Teachers teacher = await _appDbContext.Teachers.FindAsync(id);
+            if (teacher == null) return NotFound();
+
+            return View(teacher);
         }
 
     }

@@ -57,6 +57,10 @@
     <Compile Remove="Migrations\20230210202412_TABLESocialPage.Designer.cs" />
     <Compile Remove="Migrations\20230211181114_SocialTAbLe1.cs" />
     <Compile Remove="Migrations\20230211181114_SocialTAbLe1.Designer.cs" />
+    <Compile Remove="Migrations\20230212144003_AddTable.cs" />
+    <Compile Remove="Migrations\20230212144003_AddTable.Designer.cs" />
+    <Compile Remove="Migrations\20230212171250_Table123.cs" />
+    <Compile Remove="Migrations\20230212171250_Table123.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

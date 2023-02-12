@@ -77,6 +77,52 @@ namespace BackProject.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Update(int? id)
+        {
+            if (id == null) return NotFound();
+            Category category = _appDbContext.Category.Find(id);
+            if (category == null) return NotFound();
+            return View(new UpdateCategoryVM {  Name = category.Name });
+        }
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+
+        public IActionResult Update(int? id, UpdateCategoryVM category)
+        {
+            if (id == null) return NotFound();
+            Category existCategory = _appDbContext.Category.Find(id);
+            if (existCategory == null) return NotFound();
+            //string filename = null;
+
+            //if (course.Photo != null)
+            //{
+            //    string path = Path.Combine(_env.WebRootPath, "img/course", existCourse.ImageUrl);
+            //    if (System.IO.File.Exists(path))
+            //    {
+            //        System.IO.File.Delete(path);
+            //    }
+
+            //    if (!course.Photo.CheckImage())
+            //    {
+            //        ModelState.AddModelError("Photo", "sekil sec");
+            //    }
+            //    if (course.Photo.CheckImageSize(1000))
+            //    {
+            //        ModelState.AddModelError("Photo", "olcu boyukdur");
+
+            //    }
+            //    filename = course.Photo.SaveImage(_env, "img/course");
+
+            //}
+            //existCategory.ImageUrl = filename ?? existCategory.ImageUrl;
+            //existCategory.Desc = course.Desc;
+            existCategory.Name = category.Name;
+            _appDbContext.SaveChanges();
+            return RedirectToAction("Index");
+
+
+        }
+
 
     }
 }

@@ -23,6 +23,10 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Desc</th>
+                                   @* <th>Facebook</th>
+                                    <th>Instagram</th>
+                                    <th>LinkedIn</th>
+                                    <th>Whatsapp</th>*@
                                     <th>Settings</th>
 
                                 </tr>
@@ -44,13 +48,31 @@
                                             <p>@item.Desc</p>
                                         </td>
 
-                                    
-
-                                        <td>
-                                            <a asp-action="delete" asp-route-id="@item.Id"> <btn style="background-color:red;cursor:pointer;position:absolute;margin-top:-50px;padding:10px"> Delete </btn></a>
-                                            <a asp-action="update" asp-route-id="@item.Id"> <btn style="background-color:chartreuse;cursor:pointer;position:absolute;margin-top:5px;padding:7px"> Update </btn></a>
+                                       @* <td>
+                                            <p>@item.Facebook</p>
                                         </td>
 
+                                             <td>
+                                            <p>@item.Instagram</p>
+                                        </td>
+
+
+                                             <td>
+                                            <p>@item.LinkedIn</p>
+                                        </td>
+
+
+
+                                             <td>
+                                            <p>@item.Whatsapp</p>
+                                        </td>
+*@
+                                        <td >
+                                            <a asp-action="delete" asp-route-id="@item.Id"> <btn style="background-color:red;cursor:pointer;position:absolute;margin-top:-50px;padding:10px"> Delete </btn></a>
+                                            <a asp-action="update" asp-route-id="@item.Id"> <btn style="background-color:chartreuse;cursor:pointer;position:absolute;margin-top:5px;padding:7px"> Update </btn></a>
+
+                                            <a asp-action="detail" asp-route-id="@item.Id"> <btn style="background-color:aqua;cursor:pointer;position:absolute;margin-left:70px;margin-top:-15px;padding:7px"> Detail </btn></a>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
